@@ -40,4 +40,22 @@ public class AppUserService implements UserDetailsService {
         return "Registration Successful";
     }
 
+    public String updateUser(AppUser appUser,String email) {
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(appUser.getPassword());
+
+        appUserRepository.findByEmail(email)
+                .map(appUser1 -> {
+                    appUser1.setName(appUser.getName());
+                    appUser1.setContactNumber(appUser.getContactNumber());
+                    appUser1.setEmail(appUser.getEmail());
+                    appUser1.setPassword(encodedPassword);
+                    appUser1.setAppUserRole(appUser.getAppUserRole());
+                    return appUserRepository.save(appUser1);
+                })
+                .orElseGet(() -> {
+                    appUser.setEmail(email);
+                    return appUserRepository.save(appUser); });
+        return "Updation Successful";
+    }
 }
