@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -57,5 +58,9 @@ public class AppUserService implements UserDetailsService {
                     appUser.setEmail(email);
                     return appUserRepository.save(appUser); });
         return "Updation Successful";
+    }
+
+    public Optional<AppUser> viewUser(String email){
+        return appUserRepository.findByEmail(email);
     }
 }
