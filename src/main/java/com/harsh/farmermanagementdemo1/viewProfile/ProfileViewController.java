@@ -5,6 +5,7 @@ import com.harsh.farmermanagementdemo1.appuser.AppUserService;
 import com.harsh.farmermanagementdemo1.authenticate.JwtUtil;
 import com.harsh.farmermanagementdemo1.registration.RegistrationRequest;
 import com.harsh.farmermanagementdemo1.registration.RegistrationService;
+import com.harsh.farmermanagementdemo1.tryNew.FarmerDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,13 +31,10 @@ public class ProfileViewController {
             return userService.loadUserByUsername(userEmail);
     }
 
-    @GetMapping("/demo_farmers/view_profile")
-    public Optional<AppUser> demo1(@RequestHeader("Authorization") String token){
-        String userEmail = null;
-        if (token != null && token.startsWith("Bearer ")) {
-            String jwtToken = token.substring(7);
-            userEmail = jwtUtil.extractUsername(jwtToken);
-        }
-            return userService.viewUser(userEmail);
+    @GetMapping("/details/{email}")
+    public FarmerDetails demo1(@PathVariable("email") String email){
+            return userService.viewFarmer(email);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.harsh.farmermanagementdemo1.appuser;
 
 import com.harsh.farmermanagementdemo1.exception.EmailAlreadyTakenException;
+import com.harsh.farmermanagementdemo1.tryNew.FarmerDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -62,5 +63,17 @@ public class AppUserService implements UserDetailsService {
 
     public Optional<AppUser> viewUser(String email){
         return appUserRepository.findByEmail(email);
+    }
+
+    public FarmerDetails viewFarmer(String email){
+           Optional<AppUser> user = appUserRepository.findByEmail(email);
+           AppUser appUser = user.get();
+           FarmerDetails farmer = new FarmerDetails(
+                    appUser.getName(),
+                   appUser.getContactNumber(),
+                   appUser.getEmail(),
+                   appUser.getAddress()
+           );
+           return farmer;
     }
 }
