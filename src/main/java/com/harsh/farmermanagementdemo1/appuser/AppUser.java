@@ -17,7 +17,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-@Document(collection="registrations")
+@Document(collection="farmers")
 public class AppUser implements UserDetails {
 
     @Id

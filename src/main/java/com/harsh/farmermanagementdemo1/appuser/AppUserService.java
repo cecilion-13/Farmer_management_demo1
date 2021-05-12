@@ -52,6 +52,7 @@ public class AppUserService implements UserDetailsService {
                     appUser1.setContactNumber(appUser.getContactNumber());
                     appUser1.setEmail(appUser.getEmail());
                     appUser1.setPassword(encodedPassword);
+                    appUser1.setAddress(appUser.getAddress());
                     appUser1.setAppUserRole(appUser.getAppUserRole());
                     return appUserRepository.save(appUser1);
                 })
