@@ -46,7 +46,8 @@ public class CropResource {
     }
 
     @PutMapping("/update_Crop/{id}")
-    public CropItem updateCropItem(@RequestBody UpdateRequest requestItem,
+    public CropItem updateCropItem(@RequestHeader("Authorization") String token,
+                                   @RequestBody UpdateRequest requestItem,
                                    @PathVariable("id")ObjectId id){
         restTemplate.put("http://crop-info-service/crops/"+id,requestItem);
         CropItem updatedIem =

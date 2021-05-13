@@ -2,6 +2,7 @@ package com.harsh.farmermanagementdemo1.cropsData;
 
 import lombok.*;
 
+
 @Getter
 @Setter
 @EqualsAndHashCode
