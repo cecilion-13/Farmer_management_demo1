@@ -1,0 +1,89 @@
+
+
+      *********************************CROP DEAL**************************
+
+Use Case
+
+
+A.Signup/Login 
+   1.Sign_up
+       1.1 Each User/Dealer use REST API link "/sign_up"
+       1.2 Enter Details:-
+             Username,Password,Email,Contact No.,Address.
+       1.3 Apply Validation
+       1.4 Return Result based on Validation.
+           1.4.1 If registration Successful, then return Profile else return required fields.   
+
+   2.Login
+       1.1 Each User/Dealer use REST API link "/login"
+       1.2 Enter Details:-
+             Username,Password.
+       1.3 Verfiy it.
+       1.4 Return Result based on Verification
+   
+  
+B.Edit/Manage Profile
+Farmer and Dealer can edit and view their profile information
+   1.A User Login to the System using 
+        Username,Password.
+     Use REST API call "login/username/password";
+   (We can use POST request with two field and then verify and validate it).   
+   2.After Login, 
+        2.1 A User can view their profile using "/view".
+        2.2 A User can edit their profile using "profile/edit".
+            2.2.1 Pass The Things you want to edit as Body of Post Request.
+
+
+C.Bank Account Details
+Add bank account details for payment transfer
+   1.After Login, Add Bank Account Details using link "add_bank_account".
+   2.Enter Details (e.g. :- A/c No.,Bank IFSC Code,Current Balance.).
+   3.Validate the details 
+   4.Return result based on verification and validation.
+
+
+
+D.Publish Crop Details
+Farmer can add Crop details,quantity,location and type,price.
+1.After Login, Farmer can use "/add_product" to add crops into the system.
+2.Enter Details:-
+A. Type of Adding Materials (Like Fruit,Vegetables , Crops). 
+B. Name of Product.
+ 1.For type:-GRAINS
+ -wheat
+ -rice
+ -sugarcane
+ -corn
+
+ 2.For type:-FRUITS
+ -apple
+ -orangle
+ -mango
+ -grapes
+
+ 3.For type:-Vegetables
+ -potato
+ -onion
+ -carrot
+ -ladyfinger
+
+
+C.Quantity.
+D. Price.
+E. Location.   
+Note:- A Farmer can add only listed products to the system. Allowed Items List provided in API and can be enchanced further bassed on requirement.
+   
+3. Verify and validate the added product.
+4.Return Result based on validation.   
+5.If Validation Successful, Store the Details to the Product Database .
+    
+
+E.Search For Crops
+   1. A Dealer Login to the System
+   2. A Dealer can be able to search for the particular product by using this link "/subscribe/productType/productName".
+   3. After Validation for that the product is genuine Return result.   
+
+F.Payment
+ After the discussion the Dealer can also made a payment using the platform, from the added bank account only.
+  
+
